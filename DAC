@@ -12,7 +12,6 @@
 #include <ctype.h>
 #include <string.h>
 
-//New Code
 #define MAX 5
 
 #define MAX_LEN  		90
@@ -217,7 +216,7 @@ void changeUserPriv(int** array, int num_users, int num_files, int num_perm, SYS
     int len,i,j,k;
     
     
-    // Promt for the User
+    // Prompt for the User
     printf("Which user would you like to change(user change only): ");
     if (fgets(temp_user, MAX_LEN, stdin) != NULL) {
         clearInputStream(temp_user);
@@ -225,7 +224,7 @@ void changeUserPriv(int** array, int num_users, int num_files, int num_perm, SYS
 		if(temp_user[len - 1] == '\n') temp_user[len - 1] = '\0';
 	}
     
-    //Promt for the Privilage to change
+    //Prompt for the Privilege to change
     printf("Which privelages would you like to set(NO, R, W, RW): ");
     if (fgets(temp_priv, MAX_LEN, stdin) != NULL) {
         clearInputStream(temp_priv);
@@ -234,7 +233,7 @@ void changeUserPriv(int** array, int num_users, int num_files, int num_perm, SYS
 	}
     
     
-    //Go thought the matrix is the user is matched then change the privalges
+    //Go through the matrix the user is matched then change the privileges
     for (i = 0; i < num_users; i++)
         if(strcmp(temp_user, tempUser[i].name) == 0)
            for (j=0; j < num_files; j++)
@@ -245,15 +244,15 @@ void changeUserPriv(int** array, int num_users, int num_files, int num_perm, SYS
         
            
 
-/* Change the a specific file privalages
- * Same as the user change but in this one you change all the privilages for an object
+/* Change the a specific file privileges
+ * Same as the user change but in this one you change all the privileges for an object
  */
 void changeFilePriv(int** array, int num_users, int num_files, int num_perm, SYSUSER *tempUser, SYSFILE *tempFile, SYSPERM *tempPerm) {
     char temp_file[25] = "";
     char temp_priv[10] = "";
     int len,i,j,k;
     
-    // Promt for the User
+    // Prompt for the User
     printf("Which file would you like to change(file change only): ");
     if (fgets(temp_file, MAX_LEN, stdin) != NULL) {
         clearInputStream(temp_file);
@@ -261,7 +260,7 @@ void changeFilePriv(int** array, int num_users, int num_files, int num_perm, SYS
 		if(temp_file[len - 1] == '\n') temp_file[len - 1] = '\0';
 	}
     
-    //Promt for the Privilage to change
+    //Prompt for the Privilege to change
     printf("Which privelages would you like to set(NO, R, W, RW): ");
     if (fgets(temp_priv, MAX_LEN, stdin) != NULL) {
         clearInputStream(temp_priv);
@@ -271,7 +270,7 @@ void changeFilePriv(int** array, int num_users, int num_files, int num_perm, SYS
 
     
     
-    //Go thought the matrix if the object is matched then change the privalges
+    //Go through the matrix if the object is matched then change the privileges
     for (i = 0; i < num_files; i++)
         if(strcmp(temp_file, tempFile[i].label) == 0)
             for (j=0; j < num_users; j++)
@@ -281,7 +280,7 @@ void changeFilePriv(int** array, int num_users, int num_files, int num_perm, SYS
 }
 
 
-/* Change the a specific user and object privalages
+/* Change the a specific user and object privileges
  * Ask for the user, object and the permission and apply all of those. Same as in the other two
  */
 void changeUserObjectPriv(int** array, int num_users, int num_files, int num_perm, SYSUSER *tempUser, SYSFILE *tempFile, SYSPERM *tempPerm) {
@@ -424,8 +423,7 @@ void cleanup(int** array, int x){
     }
 }
 
-/* I just took this from Dan's previous lab
- *
+/*
  * This function ensures that the input buffer (stdin) does not contain
  * any inproperly processed/non-terminating lines, which may in turn
  * affect values supplied for passwords.
